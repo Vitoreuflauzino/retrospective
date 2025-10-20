@@ -1,33 +1,43 @@
 let currentSlide = 1;
-const totalSlides = 3; // Mude conforme o número de slides
-let autoSlideInterval;
+const totalSlides = 3; // Atualize se você tiver mais slides
 
-// Função para ir para o próximo slide automaticamente
-function nextSlide() {
-  const current = document.getElementById(`slide${currentSlide}`);
-  current.classList.remove("active");
+function showSlide(slideNumber) {
+  // Esconde todos os slides
+  const slides = document.querySelectorAll(".slide");
+  slides.forEach(slide => slide.classList.remove("active"));
 
+  // Mostra o slide atual
+  const current = document.getElementById(`slide${slideNumber}`);
+  current.classList.add("active");
+
+  // Verifica se o slide deve avançar automaticamente (tem imagem ou classe 'auto')
+  const hasImage = current.querySelector("img");
+  const isAuto = current.classList.contains("auto");
+
+  if (hasImage || isAuto) {
+    // Avança automaticamente em 3 segundos
+    setTimeout(() => {
+      proximo();
+    }, 3000);
+  }
+}
+
+function startSlideshow() {
+  currentSlide = 2;
+  showSlide(currentSlide);
+}
+
+function proximo() {
   currentSlide++;
 
-  // Se for o último slide, para a navegação automática
   if (currentSlide > totalSlides) {
-    clearInterval(autoSlideInterval); // Para o setInterval
+    currentSlide = totalSlides; // Não passa do último
     return;
   }
 
-  const next = document.getElementById(`slide${currentSlide}`);
-  next.classList.add("active");
+  showSlide(currentSlide);
 }
-
-// Função chamada ao clicar no botão "Começar"
-function startSlideshow() {
-  // Some com o slide 1
-  document.getElementById("slide1").classList.remove("active");
-
-  // Mostra o slide 2
-  currentSlide = 2;
-  document.getElementById("slide2").classList.add("active");
-
-  // Começa a transição automática entre os slides (a cada 3 segundos)
-  autoSlideInterval = setInterval(nextSlide, 3000);
+function abrirCarta() {
+  document.getElementById("frente").style.display = "none";
+  document.getElementById("conteudo").style.display = "block";
 }

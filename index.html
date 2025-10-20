@@ -7,14 +7,34 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="slide1" class="slide active">
-    <h1>Embarque nessa viagem no tempo...</h1>
-    <button onclick="startSlideshow()">Começar</button>
-  </div>
+  <div id="slide1" class="slide active star-background">
+  <div class="stars"></div>
+  <div class="stars2"></div>
+  <div class="stars3"></div>
 
-  <div id="slide2" class="slide">
+  <div class="carta" id="carta">
+    <div class="frente" id="frente">
+      <h2>💌 Uma carta para você...</h2>
+      <button onclick="abrirCarta()">Abrir Carta</button>
+    </div>
+    <div class="conteudo" id="conteudo">
+      <p>
+        Oi, amor. 💖<br><br>
+        Preparei essa retrospectiva para reviver cada instante mágico que vivemos juntos.<br>
+        Cada memória, cada sorriso, cada detalhe...<br><br>
+        Você é meu tudo. Vamos embarcar nessa viagem?
+      </p>
+      <button onclick="startSlideshow()">Começar</button>
+    </div>
+  </div>
+</div>
+
+
+  <div id="slide2" class="slide auto">
     <h2>05/05/2025. O dia que mudou nosso ano e nossas vidas...... pra sempre</h2>
     <img src="fotos/nossa-primeira-foto.jpg" alt="Primeira foto juntos" />
+    <button onclick="proximo()"> Proximo </button>
+    <h4>oi oi oi</h4>
   </div>
 
   <div id="slide3" class="slide">
