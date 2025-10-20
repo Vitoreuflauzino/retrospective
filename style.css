@@ -6,127 +6,120 @@ body {
   overflow: hidden;
 }
 
+/* Fundo animado (particles.js) */
+#particles-js {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 0;
+}
+
+/* Slides */
 .slide {
   display: none;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   height: 100vh;
-  padding: 2rem;
   text-align: center;
-  background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
-  transition: all 0.5s ease-in-out;
+  padding: 2rem;
+  position: relative;
+  z-index: 1;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease, visibility 1s ease;
 }
 
 .slide.active {
   display: flex;
-  animation: fadeIn 1s ease-in;
+  opacity: 1;
+  visibility: visible;
+  animation: fadeIn 1.5s ease;
 }
 
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Botões */
 button {
   margin-top: 2rem;
   padding: 1rem 2rem;
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   border: none;
   border-radius: 8px;
-  background-color: #1db954;
+  background-color: #f06292;
   color: white;
   cursor: pointer;
   transition: 0.3s;
 }
 
 button:hover {
-  background-color: #1ed760;
+  background-color: #ff85b0;
+  transform: scale(1.05);
 }
 
+/* Imagens */
 img {
   max-width: 90%;
   max-height: 70vh;
   margin-top: 1rem;
   border-radius: 12px;
-  box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.2);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(30px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-/* Fundo com estrelas animadas */
-.star-background {
-  overflow: hidden;
-  background: #000;
-  position: relative;
-}
-
-.stars, .stars2, .stars3 {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background-repeat: repeat;
-  z-index: 0;
-  top: 0;
-  left: 0;
-}
-
-.stars {
-  background-image: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/stars.png');
-  animation: moveStars 60s linear infinite;
-}
-
-.stars2 {
-  background-image: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/stars2.png');
-  animation: moveStars 120s linear infinite;
-  opacity: 0.5;
-}
-
-.stars3 {
-  background-image: url('https://raw.githubusercontent.com/VincentGarreau/particles.js/master/demo/media/stars3.png');
-  animation: moveStars 180s linear infinite;
-  opacity: 0.3;
-}
-
-@keyframes moveStars {
-  from { background-position: 0 0; }
-  to { background-position: -10000px 5000px; }
-}
-
-/* Carta interativa */
+/* Carta */
 .carta {
   position: relative;
-  z-index: 1;
-  background-color: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  padding: 30px;
-  border-radius: 10px;
-  width: 80%;
-  max-width: 500px;
-  margin: 100px auto;
-  color: #fff;
-  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-  transition: all 0.6s ease;
+  z-index: 2;
+  width: 320px;
+  height: 250px;
+  perspective: 1000px;
 }
 
 .frente, .conteudo {
-  display: none;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 10px;
+  padding: 20px;
+  box-shadow: 0 0 15px rgba(255,255,255,0.2);
+  background-color: rgba(255,255,255,0.1);
+  backdrop-filter: blur(10px);
+  transition: transform 0.8s;
 }
 
-#frente {
-  display: block;
+.frente {
+  transform: rotateY(0deg);
 }
 
-button {
-  background-color: #f06292;
-  border: none;
-  color: white;
-  padding: 10px 20px;
-  margin-top: 20px;
-  font-size: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
+.conteudo {
+  transform: rotateY(180deg);
+}
+
+.carta.virada .frente {
+  transform: rotateY(-180deg);
+}
+
+.carta.virada .conteudo {
+  transform: rotateY(0deg);
+}
+
+/* Corações flutuantes */
+.coracao {
+  position: fixed;
+  bottom: 0;
+  font-size: 24px;
+  color: pink;
+  animation: flutuar 6s linear forwards;
+  z-index: 3;
+}
+
+@keyframes flutuar {
+  0% { transform: translateY(0) scale(1); opacity: 1; }
+  100% { transform: translateY(-800px) scale(0.5); opacity: 0; }
 }

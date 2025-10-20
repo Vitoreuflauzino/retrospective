@@ -7,42 +7,71 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div id="slide1" class="slide active star-background">
-  <div class="stars"></div>
-  <div class="stars2"></div>
-  <div class="stars3"></div>
+  <!-- Música de fundo -->
+  <audio id="musica" src="musica.mp3" preload="auto" loop></audio>
 
-  <div class="carta" id="carta">
-    <div class="frente" id="frente">
-      <h2>💌 Uma carta para você...</h2>
-      <button onclick="abrirCarta()">Abrir Carta</button>
-    </div>
-    <div class="conteudo" id="conteudo">
-      <p>
-        Oi, amor. 💖<br><br>
-        Preparei essa retrospectiva para reviver cada instante mágico que vivemos juntos.<br>
-        Cada memória, cada sorriso, cada detalhe...<br><br>
-        Você é meu tudo. Vamos embarcar nessa viagem?
-      </p>
-      <button onclick="startSlideshow()">Começar</button>
+  <!-- Fundo animado -->
+  <div id="particles-js"></div>
+
+  <!-- Slide 1 (Carta) -->
+  <div id="slide1" class="slide active">
+    <div class="carta" id="carta">
+      <div class="frente" id="frente">
+        <h2>💌 Uma carta para você...</h2>
+        <button onclick="abrirCarta()">Abrir Carta</button>
+      </div>
+      <div class="conteudo" id="conteudo">
+        <p>
+          Oi, amor. 💖<br><br>
+          Preparei essa retrospectiva para reviver cada instante mágico que vivemos juntos.<br>
+          Cada memória, cada sorriso, cada detalhe...<br><br>
+          Você é meu tudo. Vamos embarcar nessa viagem?
+        </p>
+        <button onclick="startSlideshow()">Começar</button>
+      </div>
     </div>
   </div>
-</div>
 
-
+  <!-- Slide 2 -->
   <div id="slide2" class="slide auto">
-    <h2>05/05/2025. O dia que mudou nosso ano e nossas vidas...... pra sempre</h2>
+    <h2>05/05/2025 — O dia que mudou nossas vidas pra sempre 💞</h2>
     <img src="fotos/nossa-primeira-foto.jpg" alt="Primeira foto juntos" />
-    <button onclick="proximo()"> Proximo </button>
-    <h4>oi oi oi</h4>
   </div>
 
+  <!-- Slide 3 -->
   <div id="slide3" class="slide">
     <h2>Desde então, cada momento ao seu lado tem sido mágico 💫</h2>
+    <button onclick="proximo()">Próximo</button>
   </div>
 
-  <!-- Adicione mais slides conforme quiser -->
+  <!-- Slide 4 -->
+  <div id="slide4" class="slide">
+    <h2>Obrigada(o) por me fazer tão feliz 💗</h2>
+    <p>Essa retrospectiva é apenas um pedacinho do quanto te amo.</p>
+  </div>
 
   <script src="script.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+  <script>
+    // Configuração do fundo estrelado
+    particlesJS("particles-js", {
+      particles: {
+        number: { value: 150 },
+        size: { value: 2 },
+        color: { value: "#ffffff" },
+        move: { speed: 0.3 },
+        line_linked: { enable: false },
+        opacity: { value: 0.8 }
+      },
+      interactivity: {
+        events: {
+          onhover: { enable: true, mode: "repulse" }
+        },
+        modes: {
+          repulse: { distance: 100, duration: 0.4 }
+        }
+      }
+    });
+  </script>
 </body>
 </html>

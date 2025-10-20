@@ -1,43 +1,54 @@
 let currentSlide = 1;
-const totalSlides = 3; // Atualize se você tiver mais slides
+const totalSlides = 4;
 
+// Mostra o slide atual
 function showSlide(slideNumber) {
-  // Esconde todos os slides
   const slides = document.querySelectorAll(".slide");
   slides.forEach(slide => slide.classList.remove("active"));
 
-  // Mostra o slide atual
   const current = document.getElementById(`slide${slideNumber}`);
-  current.classList.add("active");
+  if (current) current.classList.add("active");
 
-  // Verifica se o slide deve avançar automaticamente (tem imagem ou classe 'auto')
-  const hasImage = current.querySelector("img");
-  const isAuto = current.classList.contains("auto");
+  const hasImage = current?.querySelector("img");
+  const isAuto = current?.classList.contains("auto");
 
   if (hasImage || isAuto) {
-    // Avança automaticamente em 3 segundos
-    setTimeout(() => {
-      proximo();
-    }, 3000);
+    setTimeout(() => proximo(), 4000);
   }
 }
 
+// Começa o slideshow e toca música
 function startSlideshow() {
   currentSlide = 2;
+  document.getElementById("musica").play();
   showSlide(currentSlide);
 }
 
+// Passa para o próximo slide
 function proximo() {
   currentSlide++;
-
   if (currentSlide > totalSlides) {
-    currentSlide = totalSlides; // Não passa do último
+    currentSlide = totalSlides;
+    alert("💖 Fim da retrospectiva 💖");
     return;
   }
-
   showSlide(currentSlide);
 }
+
+// Carta com efeito de virar
 function abrirCarta() {
-  document.getElementById("frente").style.display = "none";
-  document.getElementById("conteudo").style.display = "block";
+  document.getElementById("carta").classList.add("virada");
 }
+
+// Corações flutuantes
+function gerarCoracoes() {
+  const coracao = document.createElement('div');
+  coracao.classList.add('coracao');
+  coracao.innerHTML = '💖';
+  coracao.style.left = Math.random() * 100 + 'vw';
+  coracao.style.animationDuration = (4 + Math.random() * 3) + 's';
+  document.body.appendChild(coracao);
+  setTimeout(() => coracao.remove(), 7000);
+}
+
+setInterval(gerarCoracoes, 900);
