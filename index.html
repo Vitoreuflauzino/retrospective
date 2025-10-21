@@ -7,13 +7,10 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Música de fundo -->
   <audio id="musica" src="musica.mp3" preload="auto" loop></audio>
 
-  <!-- Fundo animado -->
   <div id="particles-js"></div>
 
-  <!-- Slide 1 (Carta) -->
   <div id="slide1" class="slide active">
     <div class="carta" id="carta">
       <div class="frente" id="frente">
@@ -32,19 +29,16 @@
     </div>
   </div>
 
-  <!-- Slide 2 -->
   <div id="slide2" class="slide auto">
     <h2>05/05/2025 — O dia que mudou nossas vidas pra sempre 💞</h2>
     <img src="fotos/nossa-primeira-foto.jpg" alt="Primeira foto juntos" />
   </div>
 
-  <!-- Slide 3 -->
   <div id="slide3" class="slide">
     <h2>Desde então, cada momento ao seu lado tem sido mágico 💫</h2>
     <button onclick="proximo()">Próximo</button>
   </div>
 
-  <!-- Slide 4 -->
   <div id="slide4" class="slide">
     <h2>Obrigada(o) por me fazer tão feliz 💗</h2>
     <p>Essa retrospectiva é apenas um pedacinho do quanto te amo.</p>
@@ -53,7 +47,6 @@
   <script src="script.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
   <script>
-    // Configuração do fundo estrelado
     particlesJS("particles-js", {
       particles: {
         number: { value: 150 },
