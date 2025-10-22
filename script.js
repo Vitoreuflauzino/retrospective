@@ -1,5 +1,5 @@
 let currentSlide = 1;
-const totalSlides = 11;
+const totalSlides = 13;
 
 function showSlide(slideNumber) {
   const slides = document.querySelectorAll(".slide");
@@ -12,7 +12,7 @@ function showSlide(slideNumber) {
   const isAuto = current?.classList.contains("auto");
 
   if (isAuto) {
-    setTimeout(() => proximo(), 4000);
+    setTimeout(() => proximo(), 6000);
   }
 }
 
