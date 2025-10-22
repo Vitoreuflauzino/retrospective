@@ -1,7 +1,6 @@
 let currentSlide = 1;
-const totalSlides = 4;
+const totalSlides = 9;
 
-// Mostra o slide atual
 function showSlide(slideNumber) {
   const slides = document.querySelectorAll(".slide");
   slides.forEach(slide => slide.classList.remove("active"));
@@ -17,14 +16,12 @@ function showSlide(slideNumber) {
   }
 }
 
-// Começa o slideshow e toca música
 function startSlideshow() {
   currentSlide = 2;
   document.getElementById("musica").play();
   showSlide(currentSlide);
 }
 
-// Passa para o próximo slide
 function proximo() {
   currentSlide++;
   if (currentSlide > totalSlides) {
@@ -35,12 +32,10 @@ function proximo() {
   showSlide(currentSlide);
 }
 
-// Carta com efeito de virar
 function abrirCarta() {
   document.getElementById("carta").classList.add("virada");
 }
 
-// Corações flutuantes
 function gerarCoracoes() {
   const coracao = document.createElement('div');
   coracao.classList.add('coracao');
