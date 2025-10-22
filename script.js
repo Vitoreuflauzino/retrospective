@@ -1,5 +1,6 @@
 let currentSlide = 1;
 const totalSlides = 13;
+let autoTimeout; // guarda o timeout para limpar se necessário
 
 function showSlide(slideNumber) {
   const slides = document.querySelectorAll(".slide");
@@ -8,11 +9,12 @@ function showSlide(slideNumber) {
   const current = document.getElementById(`slide${slideNumber}`);
   if (current) current.classList.add("active");
 
-  const hasImage = current?.querySelector("img");
-  const isAuto = current?.classList.contains("auto");
+  // Limpa timeout antigo
+  if (autoTimeout) clearTimeout(autoTimeout);
 
-  if (isAuto) {
-    setTimeout(() => proximo(), 6000);
+  // Avança sozinho apenas se tiver a classe "auto"
+  if (current?.classList.contains("auto")) {
+    autoTimeout = setTimeout(() => proximo(), 6000);
   }
 }
 
