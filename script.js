@@ -1,6 +1,6 @@
-let currentSlide = 1;
-const totalSlides = 13;
-let autoTimeout; // guarda o timeout para limpar se necessário
+let currentSlide = 15;
+const totalSlides = 16;
+let autoTimeout; 
 
 function showSlide(slideNumber) {
   const slides = document.querySelectorAll(".slide");
@@ -9,14 +9,13 @@ function showSlide(slideNumber) {
   const current = document.getElementById(`slide${slideNumber}`);
   if (current) current.classList.add("active");
 
-  // Limpa timeout antigo
   if (autoTimeout) clearTimeout(autoTimeout);
 
-  // Avança sozinho apenas se tiver a classe "auto"
   if (current?.classList.contains("auto")) {
     autoTimeout = setTimeout(() => proximo(), 6000);
   }
 }
+showSlide(currentSlide);
 
 function startSlideshow() {
   currentSlide = 2;
@@ -49,3 +48,26 @@ function gerarCoracoes() {
 }
 
 setInterval(gerarCoracoes, 900);
+
+const cartas = document.querySelectorAll(".carta");
+const fraseRevelada = document.getElementById("frase-revelada");
+const fotoFinal = document.querySelector(".foto-final");
+
+cartas.forEach(carta => {
+  carta.addEventListener("click", () => {
+    const texto = carta.getAttribute("data-frase");
+    fraseRevelada.textContent = texto;
+
+    // Marca a carta como aberta
+    carta.style.backgroundColor = "#555";
+    carta.style.cursor = "default";
+    carta.style.transform = "scale(1)";
+    carta.removeEventListener("click", () => {}); // previne múltiplos cliques
+
+    // Se todas as cartas forem reveladas, mostra a foto final
+    const abertas = [...cartas].filter(c => c.style.backgroundColor === "rgb(85, 85, 85)");
+    if (abertas.length === cartas.length) {
+      fotoFinal.style.opacity = 1;
+    }
+  });
+});
