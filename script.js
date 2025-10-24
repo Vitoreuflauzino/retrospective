@@ -1,4 +1,4 @@
-let currentSlide = 15;
+let currentSlide = 1;
 const totalSlides = 16;
 let autoTimeout; 
 
@@ -49,25 +49,41 @@ function gerarCoracoes() {
 
 setInterval(gerarCoracoes, 900);
 
-const cartas = document.querySelectorAll(".carta");
-const fraseRevelada = document.getElementById("frase-revelada");
-const fotoFinal = document.querySelector(".foto-final");
+const cartas = document.querySelectorAll("#cartas-container .carta-frase");
+const fotoFinal = document.getElementById("foto-final");
+let cartasReveladas = 0;
 
 cartas.forEach(carta => {
+  // cria a estrutura da carta
+  const inner = document.createElement("div");
+  inner.classList.add("carta-inner");
+
+  const frente = document.createElement("div");
+  frente.classList.add("carta-frente");
+
+  const verso = document.createElement("div");
+  verso.classList.add("carta-verso");
+  verso.innerText = carta.dataset.frase;
+
+  inner.appendChild(frente);
+  inner.appendChild(verso);
+  carta.appendChild(inner);
+
+  // evento de clique
   carta.addEventListener("click", () => {
-    const texto = carta.getAttribute("data-frase");
-    fraseRevelada.textContent = texto;
+    if (!carta.classList.contains("virada")) {
+      carta.classList.add("virada");
+      cartasReveladas++;
 
-    // Marca a carta como aberta
-    carta.style.backgroundColor = "#555";
-    carta.style.cursor = "default";
-    carta.style.transform = "scale(1)";
-    carta.removeEventListener("click", () => {}); // previne múltiplos cliques
-
-    // Se todas as cartas forem reveladas, mostra a foto final
-    const abertas = [...cartas].filter(c => c.style.backgroundColor === "rgb(85, 85, 85)");
-    if (abertas.length === cartas.length) {
-      fotoFinal.style.opacity = 1;
+      if (cartasReveladas === cartas.length) {
+        fotoFinal.classList.add("mostrar");
+      }
     }
   });
 });
+
+
+
+
+
+
