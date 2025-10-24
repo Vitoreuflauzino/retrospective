@@ -1,5 +1,5 @@
-let currentSlide = 1;
-const totalSlides = 16;
+let currentSlide = 17;
+const totalSlides = 19;
 let autoTimeout; 
 
 function showSlide(slideNumber) {
@@ -80,6 +80,19 @@ cartas.forEach(carta => {
       }
     }
   });
+});
+const resposta = document.getElementById("resposta");
+
+document.getElementById("opcao1").addEventListener("click", () => {
+  resposta.innerText = "💖 Tudo bem, eu fico com você.";
+});
+
+document.getElementById("opcao2").addEventListener("click", () => {
+  resposta.innerText = "💞 Eu ficarei com você pra sempre.";
+});
+
+document.getElementById("opcao3").addEventListener("click", () => {
+  resposta.innerText = "😍 Viveremos juntos até a eternidade.";
 });
 
 

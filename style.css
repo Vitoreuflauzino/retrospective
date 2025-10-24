@@ -205,3 +205,51 @@ img {
   opacity: 1;
   transform: scale(1);
 }
+#slide16 {
+  text-align: center;
+  color: white;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
+  flex-wrap: wrap;
+}
+
+.buttons button {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  border: none;
+  border-radius: 8px;
+  background-color: #f06292;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.buttons button:hover {
+  background-color: #ff85b0;
+  transform: scale(1.05);
+}
+
+#resposta {
+  margin-top: 2rem;
+  font-size: 1.2rem;
+  color: #ff69b4;
+}
+.fotos-lado {
+  display: flex;
+  justify-content: center; 
+  gap: 1rem; 
+  flex-wrap: wrap; 
+}
+
+.fotos-lado img {
+  max-width: 45%; 
+  height: auto;
+  border-radius: 12px; 
+  box-shadow: 0 0 15px rgba(255, 255, 255, 0.2); 
+}
+
