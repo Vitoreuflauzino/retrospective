@@ -1,4 +1,4 @@
-let currentSlide = 17;
+let currentSlide = 1;
 const totalSlides = 19;
 let autoTimeout; 
 
